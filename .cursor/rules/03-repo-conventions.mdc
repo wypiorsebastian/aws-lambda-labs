@@ -1,0 +1,19 @@
+---
+description: Konwencje katalogów, nazewnictwa i sposobu pracy w repo edukacyjnym.
+alwaysApply: true
+---
+# Konwencje repo
+
+- Katalog labów: `labs/LAB-XXX/`
+- Wygenerowana treść konkretnego uruchomienia: `docs/labs/runs/LAB-XXX.md`
+- Szkielet Terraform dla laba: `infra/terraform/labs/LAB-XXX/`
+- Tracker postępu: `docs/labs/progress.md`
+- Katalog źródłowy sekwencji: `docs/labs/catalog.md`
+
+## Nazewnictwo
+- Używaj identyfikatorów `LAB-001`, `LAB-002`, ...
+- Skill names trzymaj lowercase-hyphen style.
+- Nie zmieniaj ID istniejących labów.
+
+## Zasada sekwencji
+Repo ma jedną liniową ścieżkę nauki. Nie proponuj skakania losowo między labami, chyba że użytkownik wyraźnie o to poprosi.

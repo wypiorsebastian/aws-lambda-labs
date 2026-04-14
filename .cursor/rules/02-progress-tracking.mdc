@@ -1,0 +1,29 @@
+---
+description: Reguły aktualizacji trackera postępu i zapisu wyników każdego laba.
+alwaysApply: true
+---
+# Tracking postępu
+
+## Plik źródłowy postępu
+Jedynym źródłem prawdy dla statusu labów jest `docs/labs/progress.md`.
+
+## Po uruchomieniu laba
+- ustaw status na `IN_PROGRESS`
+- wpisz datę startu
+- wyczyść pola `Completed`, `Notes`, `Cleanup`, `Learned`
+
+## Po ukończeniu laba
+- ustaw status na `DONE`
+- wpisz datę ukończenia
+- zapisz krótkie podsumowanie problemów
+- zapisz decyzje architektoniczne lub operacyjne
+- zapisz cleanup
+- zapisz 3–5 punktów `Czego się nauczyłem`
+
+## Gdy lab nie jest ukończony
+- nie ustawiaj `DONE`
+- jasno wypisz brakujące elementy
+- pozostaw status `IN_PROGRESS`
+
+## Zasada oceny ukończenia
+Walidacja jest deklaratywna: opiera się głównie na checkliście i potwierdzeniu użytkownika, a nie na pełnej automatycznej analizie semantycznej repo.

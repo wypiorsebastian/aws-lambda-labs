@@ -1,0 +1,30 @@
+---
+description: Standard tworzenia scenariuszowych labów AWS Lambda + API Gateway w tym repo.
+alwaysApply: true
+---
+# Standard tworzenia labów
+
+## Każdy lab musi zawierać
+1. Tytuł.
+2. ID laba.
+3. Story / background biznesowy.
+4. Co dokładnie ćwiczymy.
+5. Założenia wejściowe.
+6. Architektoniczny szkic rozwiązania.
+7. Checklistę zadań krok po kroku.
+8. Sekcję Terraform / IaC.
+9. Sekcję walidacji (`Jak poznam, że działa`).
+10. Sekcję pułapek i typowych błędów.
+11. Sekcję cleanup i cost hygiene.
+12. Sekcję źródeł oficjalnych.
+
+## Styl
+- Prowadź użytkownika po kolei.
+- Nie wykonuj całego zadania „za użytkownika”, chyba że wyraźnie poprosi o gotowy fragment.
+- Buduj lab jako realistyczne zadanie engineeringowe, nie jako suchy tutorial.
+- Unikaj pustych ogólników. Każdy krok ma mówić co zrobić, po co i jak zweryfikować wynik.
+
+## Wymagania dla IaC
+- Domyślnie twórz szkielet Terraform, nie pełne gotowe wdrożenie produkcyjne.
+- Szkielet ma być wystarczający, by użytkownik mógł go iteracyjnie uzupełniać.
+- Zawsze uwzględnij cleanup.

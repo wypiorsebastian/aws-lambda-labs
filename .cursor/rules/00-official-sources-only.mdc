@@ -1,0 +1,27 @@
+---
+description: Wymusza korzystanie z oficjalnych i sprawdzonych źródeł przy tworzeniu labów AWS i materiałów edukacyjnych.
+alwaysApply: true
+---
+# Oficjalne źródła i higiena faktów
+
+## Cel
+Ten projekt jest edukacyjny. Treści muszą być rzetelne, odporne na halucynacje i zgodne z aktualną dokumentacją.
+
+## Twarde zasady
+- Przy tworzeniu treści labów, checklist, wyjaśnień i skeletonów IaC korzystaj najpierw z oficjalnej dokumentacji AWS.
+- Preferowane domeny źródeł: `docs.aws.amazon.com`, `aws.amazon.com`, `registry.terraform.io`, `developer.hashicorp.com`, `cursor.com`.
+- Dla mechanizmów Cursor korzystaj z oficjalnej dokumentacji Cursor.
+- Jeżeli oficjalna dokumentacja nie wystarcza, możesz użyć innych wiarygodnych źródeł, ale tylko pomocniczo i wyraźnie to oznacz.
+- Nie twórz twierdzeń typu „AWS działa tak” bez potwierdzenia w źródle.
+- Gdy dokumentacja jest niejednoznaczna, zaznacz niepewność i opisz warianty.
+- Nie kopiuj bezkrytycznie tutoriali blogowych.
+
+## Wymagany format odniesień w treści labu
+- Dodawaj sekcję `Źródła oficjalne`.
+- Podawaj linki do 3–8 najbardziej relewantnych oficjalnych stron.
+- Jeżeli użyto źródła pomocniczego, dodaj osobną sekcję `Źródła pomocnicze` i uzasadnij, po co zostało użyte.
+
+## Antywzorce
+- Nie opieraj labu na pamięci modelu, jeżeli temat dotyczy AWS runtime, limitów, auth, endpoint types, VPC behavior, API Gateway features, Terraform resources albo kosztów.
+- Nie mieszaj HTTP API i REST API bez świadomego uzasadnienia.
+- Nie zakładaj, że funkcja wspierana dla .NET 8 automatycznie działa identycznie dla .NET 10 bez potwierdzenia.

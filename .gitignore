@@ -1,0 +1,123 @@
+# ─────────────────────────────────────────────
+# .NET / C#
+# ─────────────────────────────────────────────
+
+# Build outputs
+bin/
+obj/
+out/
+publish/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+[Pp]ackages/
+.nuget/
+nuget.config
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docobj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Rider
+.idea/
+
+# dotnet test / coverage
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+
+# dotnet publish artifacts (deployment packages)
+function.zip
+*.zip
+
+# ─────────────────────────────────────────────
+# Terraform / IaC
+# ─────────────────────────────────────────────
+
+# Local .terraform directories (init artifacts)
+**/.terraform/
+**/.terraform.lock.hcl
+
+# Terraform state — NIE commituj stanu do repo
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+
+# Plany Terraform
+*.tfplan
+
+# Zmienne z sekretami (credentials, keys)
+*.tfvars
+!*.tfvars.example
+
+# Override files (lokalny development)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ─────────────────────────────────────────────
+# AWS
+# ─────────────────────────────────────────────
+
+# AWS credentials — nigdy nie commituj
+.aws/
+aws-credentials
+credentials.json
+
+# SAM CLI artifacts (gdyby ktoś użył sam)
+.aws-sam/
+samconfig.toml
+
+# CDK artifacts
+cdk.out/
+cdk.context.json
+
+# ─────────────────────────────────────────────
+# Środowisko / OS
+# ─────────────────────────────────────────────
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ─────────────────────────────────────────────
+# Edytory
+# ─────────────────────────────────────────────
+
+# VSCode (Cursor) — commituj tylko workspace settings, nie osobiste
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.cursor/chat/
+
+# JetBrains
+*.iml
+*.iws
+.idea/
+
+# ─────────────────────────────────────────────
+# Logi i tymczasowe
+# ─────────────────────────────────────────────
+
+*.log
+*.tmp
+*.temp
