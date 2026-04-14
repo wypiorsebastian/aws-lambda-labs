@@ -1,0 +1,57 @@
+---
+description: Standards for generating hands-on cloud labs and implementation guides
+alwaysApply: true
+---
+
+When generating labs, runbooks, implementation guides, or architecture exercises:
+
+1. Do not present assumptions as platform facts.
+   - Explicitly label each item as one of:
+     - platform requirement
+     - project decision
+     - simplification for this lab
+     - best practice recommendation
+
+2. Every lab must be execution-consistent.
+   - The narrative, code, IaC, commands, expected outputs, and validation steps must describe the same exact variant.
+   - Do not mix multiple valid variants unless the lab explicitly compares them.
+   - If the lab uses a specific AWS contract (for example API Gateway payload format, stage behavior, architecture, IAM trust model), it must be stated explicitly and reflected in code and IaC.
+
+3. Verify all cloud-provider-specific claims against official documentation before writing them.
+   - Never rely on memory for AWS, Azure, Terraform, API Gateway, Lambda, IAM, networking, runtime, or deployment details.
+   - If a detail cannot be confirmed, mark it as uncertain and avoid stating it categorically.
+
+4. Prefer explicit decisions over hidden defaults.
+   - State region, runtime, architecture, stage type, payload format, deployment mechanism, naming convention, and ownership model of resources.
+   - Do not rely on undocumented or implicit defaults in the lab text.
+
+5. Each lab must contain these sections:
+   - Goal
+   - Why this approach
+   - Assumptions
+   - Architectural decisions
+   - Step-by-step implementation
+   - Validation / how to prove it works
+   - Common failure modes
+   - Cleanup
+   - Sources
+
+6. Validation must be testable.
+   - Include concrete commands, expected HTTP status codes, expected resource names, expected logs, and expected outputs.
+   - Avoid vague phrases such as "should work" or "verify in console" without stating what exactly should be visible.
+
+7. Distinguish ownership and lifecycle explicitly.
+   - For every infrastructure resource that may be auto-created by the cloud platform, state whether it is managed by Terraform or by the platform.
+   - If import may be required, say so explicitly.
+
+8. Do not generate placeholder Terraform descriptions such as "fill TODOs according to docs" in a final lab.
+   - Either provide executable IaC or mark the document as a draft/specification.
+   - Final labs must be runnable end-to-end.
+
+9. Use professional technical writing.
+   - No motivational fluff.
+   - No false simplifications.
+   - No sweeping claims like "AWS requires X" unless this is literally documented.
+   - Prefer precise wording: "In this lab we choose X" instead of "X is required" unless required by the platform.
+
+10. If there are multiple valid implementation choices, choose one and justify it in one short paragraph.

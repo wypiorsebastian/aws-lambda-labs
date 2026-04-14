@@ -1,0 +1,17 @@
+---
+description: Prevent polished but inconsistent lab generation
+alwaysApply: true
+---
+
+Before finalizing any lab or guide, perform a consistency audit:
+
+- Check that code types match the platform contract described in the text.
+- Check that Terraform resource settings match the described runtime behavior.
+- Check that URLs, stages, routes, permissions, and payload formats are mutually consistent.
+- Check that cleanup instructions match actual resource ownership.
+- Check that all "expected result" examples are achievable from the provided code and IaC.
+
+If any inconsistency is found:
+- fix it before finalizing
+- do not hide the inconsistency with vague wording
+- do not keep multiple contradictory variants in one lab
