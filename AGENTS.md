@@ -1,14 +1,19 @@
-# Instrukcje projektu
+# Lab Authoring Standards
 
-To repo służy wyłącznie do nauki AWS Lambda + API Gateway w .NET 8/10.
+When generating labs, runbooks, or implementation guides:
 
-## Najważniejsze zasady
-
-- Korzystaj przede wszystkim z oficjalnych źródeł AWS i oficjalnej dokumentacji Cursor.
-- Nie zgaduj. Gdy coś jest niepewne, najpierw potwierdź w dokumentacji.
-- Treść labów ma uczyć poprawnych nawyków operacyjnych, bezpieczeństwa i cleanupu kosztów.
-- Laby mają mieć formę realistycznych historii biznesowo-technicznych.
-- Agent ma prowadzić użytkownika krok po kroku, ale nie wykonywać całej pracy bezrefleksyjnie za niego.
-- Użytkownik pracuje z Terraform jako podstawową warstwą IaC.
-- Postęp zapisuj w `docs/labs/progress.md`.
-- Każdy lab kończ sekcją cleanup i cost hygiene.
+- Verify every provider-specific claim in official documentation before stating it as fact.
+- Do not present project decisions or simplifications as platform requirements.
+- Choose one exact implementation variant per lab and keep text, code, IaC, commands, and validation fully consistent with it.
+- Make all critical defaults explicit: region, runtime, architecture, payload format, stage model, deployment mechanism, naming, and ownership of auto-created resources.
+- Every lab must include:
+  - goal
+  - assumptions
+  - architectural decisions
+  - step-by-step execution
+  - validation
+  - failure modes
+  - cleanup
+  - official sources
+- Auto-created cloud resources must have explicit ownership: platform-managed or Terraform-managed.
+- Final runbooks must be runnable end-to-end or explicitly marked as draft/spec.

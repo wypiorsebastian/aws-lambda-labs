@@ -4,7 +4,8 @@ alwaysApply: true
 ---
 # Konwencje repo
 
-- Katalog labów: `labs/LAB-XXX/`
+- Kod źródłowy funkcji Lambda: `src/LAB-XXX/<NazwaProjektu>/`
+- Artefakty wdrożeniowe (ZIP): `artifacts/LAB-XXX/function.zip`
 - Wygenerowana treść konkretnego uruchomienia: `docs/labs/runs/LAB-XXX.md`
 - Szkielet Terraform dla laba: `infra/terraform/labs/LAB-XXX/`
 - Tracker postępu: `docs/labs/progress.md`

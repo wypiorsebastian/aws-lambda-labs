@@ -5,9 +5,9 @@
 ## Summary
 
 - Total labs: 22
-- Done: 0
+- Done: 1
 - In progress: 1
-- Not started: 21
+- Not started: 20
 
 ## Labs
 
@@ -15,7 +15,7 @@
 | Lab | Title | Status | Started | Completed | Notes |
 |---|---|---|---|---|---|
 | LAB-001 | Publiczny endpoint dla zespołu statusowego | IN_PROGRESS | 2026-04-14 | - | - |
-| LAB-002 | Jedna funkcja, wiele tras | NOT_STARTED | - | - | - |
+| LAB-002 | Jedna funkcja, wiele tras | DONE | 2026-04-15 | 2026-04-16 | Jedna Lambda, wiele tras HTTP API; payload 2.0; wdrożenie ZIP + apply; routing i logi zweryfikowane w praktyce. |
 | LAB-003 | Konfiguracja środowisk i tajemnic | NOT_STARTED | - | - | - |
 | LAB-004 | JWT dla publicznego API | NOT_STARTED | - | - | - |
 | LAB-005 | Własny Lambda authorizer | NOT_STARTED | - | - | - |
@@ -52,11 +52,17 @@
   - -
 
 ### LAB-002
-- Decisions: -
-- Problems: -
-- Cleanup: -
+- Decisions: HTTP API z kilkoma route'ami (`GET`/`POST` `/flags`, `ANY /flags/{flagKey}`, `$default`) i jedną integracją Lambda proxy; payload format 2.0; stage `$default` i route `$default` jako osobne pojęcia; brak trwałej persystencji (cel laba: transport i dispatch).
+
+- Problems: Wyjątki w handlerze (np. szkielet z `NotImplementedException`) dawały 5xx po stronie API Gateway; dopasowanie runtime `dotnet8` do `TargetFramework` net8.0 w projekcie; dopasowanie `source_arn` permission do HTTP API (`/*/*`).
+
+- Cleanup: `cd infra/terraform/labs/LAB-002 && terraform destroy`; opcjonalnie usunąć lokalny `artifacts/LAB-002/function.zip` jeśli nie chcesz trzymać artefaktu.
+
 - Learned:
-  - -
+  - Routing wybiera API Gateway — w Lambdzie rozgałęziasz po `routeKey` i metodzie HTTP, nie „na ślepo” po samym path.
+  - `ANY` i `$default` mają konkretne role; `POST /flags` wymaga osobnej trasy, nie wystarczy `ANY /flags/{flagKey}`.
+  - Błąd w funkcji to zwykle błąd dla klienta HTTP — walidacja kończy się `curl` + CloudWatch.
+  - Logi idą przez execution role do CloudWatch — nie trzeba „logowania” do CloudWatch z kodu poza `context.Logger` / standardowym logowaniem.
 
 ### LAB-003
 - Decisions: -
