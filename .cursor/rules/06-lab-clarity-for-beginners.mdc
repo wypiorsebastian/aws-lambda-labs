@@ -1,0 +1,36 @@
+---
+description: Przystępna narracja w labach — bez skrótów bez kontekstu; wyjaśnienia dla osób uczących się AWS.
+alwaysApply: true
+---
+
+# Jasność treści labów (odbiorca: początkujący w AWS)
+
+## Cel
+
+Treści labów mają być **zrozumiałe dla osoby, która nie zna jeszcze nazewnictwa AWS**. Skróty i angielskie terminy są OK, ale **nie mogą być jedyną treścią** wyjaśnienia.
+
+## Zasady obowiązkowe przy generowaniu lub edycji laba
+
+1. **Definiuj terminy przy pierwszym razie**  
+   Gdy pojawia się pojęcie typu *recovery window*, *execution role*, *CMK*, *payload format*, *stage*, *integration* itd.: najpierw **krótko po polsku, co to jest i po co to służy**, dopiero potem ewentualny skrót lub nazwa zasobu Terraform.
+
+2. **Struktura „uproszczenia laba”**  
+   Gdy lab świadomie odbiega od produkcji, użyj w tej kolejności:
+   - jak zachowuje się AWS w typowym / domyślnym wariancie (bez żargonu albo z jego natychmiastowym wyjaśnieniem);
+   - **co dokładnie robimy w tym labie** (w tym odwołanie do konkretnego pliku IaC lub parametru, jeśli istnieje);
+   - **czym to różni się od produkcji** i dlaczego w prod inaczej.
+
+3. **Nie zakładaj wcześniejszej wiedzy**  
+   Unikaj formuł w stylu „wiadomo, że…”, „standardowo…”, „oczywiście…”, jeśli nie ma w runbooku wcześniejszego akapitu, który to uzasadnia.
+
+4. **Powiązanie IaC ↔ język naturalny**  
+   Jeśli w Terraform pojawia się atrybut (np. `recovery_window_in_days`), w runbooku musi być **jednoznaczne powiązanie**: co ten parametr oznacza dla użytkownika końcowego laba (co zobaczy, co się stanie przy `destroy`).
+
+5. **Źródła dla dociekliwych**  
+   Po dłuższym wyjaśnieniu dopuszczalny jest akapit *„w dokumentacji AWS znajdziesz…”* z linkiem do oficjalnej strony — bez zastępowania definicji samym linkiem.
+
+## Antywzorzec
+
+- Sam nagłówek typu „Cleanup bez recovery” bez definicji *recovery window*.
+- Opis decyzji tylko językiem Terraform bez zdania „co to znaczy w praktyce”.
+- Skrócenie wyjaśnienia pod pozorem „lab jest dla doświadczonych”, chyba że lab jest jawnie oznaczony jako zaawansowany (w tym repo domyślnie nie jest).

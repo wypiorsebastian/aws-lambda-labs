@@ -23,6 +23,7 @@ alwaysApply: true
 - Nie wykonuj całego zadania „za użytkownika”, chyba że wyraźnie poprosi o gotowy fragment.
 - Buduj lab jako realistyczne zadanie engineeringowe, nie jako suchy tutorial.
 - Unikaj pustych ogólników. Każdy krok ma mówić co zrobić, po co i jak zweryfikować wynik.
+- Trzymaj się zasad z `@.cursor/rules/06-lab-clarity-for-beginners.mdc`: wyjaśniaj terminy AWS przy pierwszym użyciu, nie zakładaj wcześniejszej wiedzy, łącz parametry IaC z opisem „co to znaczy w praktyce”.
 
 ## Wymagania dla IaC
 - Domyślnie twórz szkielet Terraform, nie pełne gotowe wdrożenie produkcyjne.

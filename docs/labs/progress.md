@@ -6,8 +6,8 @@
 
 - Total labs: 22
 - Done: 1
-- In progress: 1
-- Not started: 20
+- In progress: 2
+- Not started: 19
 
 ## Labs
 
@@ -16,7 +16,7 @@
 |---|---|---|---|---|---|
 | LAB-001 | Publiczny endpoint dla zespołu statusowego | IN_PROGRESS | 2026-04-14 | - | - |
 | LAB-002 | Jedna funkcja, wiele tras | DONE | 2026-04-15 | 2026-04-16 | Jedna Lambda, wiele tras HTTP API; payload 2.0; wdrożenie ZIP + apply; routing i logi zweryfikowane w praktyce. |
-| LAB-003 | Konfiguracja środowisk i tajemnic | NOT_STARTED | - | - | - |
+| LAB-003 | Konfiguracja środowisk i tajemnic | IN_PROGRESS | 2026-04-16 | - | - |
 | LAB-004 | JWT dla publicznego API | NOT_STARTED | - | - | - |
 | LAB-005 | Własny Lambda authorizer | NOT_STARTED | - | - | - |
 | LAB-006 | Observability dla publicznego API | NOT_STARTED | - | - | - |
@@ -66,8 +66,11 @@
 
 ### LAB-003
 - Decisions: -
+
 - Problems: -
+
 - Cleanup: -
+
 - Learned:
   - -
 
