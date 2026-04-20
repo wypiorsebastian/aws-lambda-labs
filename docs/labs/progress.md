@@ -5,8 +5,8 @@
 ## Summary
 
 - Total labs: 22
-- Done: 1
-- In progress: 4
+- Done: 2
+- In progress: 3
 - Not started: 17
 
 ## Labs
@@ -18,7 +18,7 @@
 | LAB-002 | Jedna funkcja, wiele tras | DONE | 2026-04-15 | 2026-04-16 | Jedna Lambda, wiele tras HTTP API; payload 2.0; wdrożenie ZIP + apply; routing i logi zweryfikowane w praktyce. |
 | LAB-003 | Konfiguracja środowisk i tajemnic | IN_PROGRESS | 2026-04-16 | - | - |
 | LAB-004 | JWT dla publicznego API | IN_PROGRESS | 2026-04-17 | - | - |
-| LAB-005 | Własny Lambda authorizer | IN_PROGRESS | 2026-04-20 | - | - |
+| LAB-005 | Własny Lambda authorizer | DONE | 2026-04-20 | 2026-04-20 | HTTP API, REQUEST authorizer, payload 2.0 i simple responses; .NET z camelCase w JSON odpowiedzi authorizera; dwa ZIP (linux-x64) i walidacja curl. |
 | LAB-006 | Observability dla publicznego API | NOT_STARTED | - | - | - |
 | LAB-007 | Wersje, aliasy i bezpieczny release funkcji | NOT_STARTED | - | - | - |
 | LAB-008 | Skalowanie i kontrola kosztu | NOT_STARTED | - | - | - |
@@ -85,14 +85,16 @@
   - -
 
 ### LAB-005
-- Decisions: -
+- Decisions: HTTP API z trasami `GET /public` (bez autoryzacji) i `GET /profile` (`authorization_type = CUSTOM`, REQUEST authorizer); jedna integracja `AWS_PROXY` (payload 2.0) do Lambdy biznesowej; authorizer z `authorizer_payload_format_version = 2.0`, `enable_simple_responses = true`, `identity_sources = [$request.header.Authorization]`; `authorizer_result_ttl_in_seconds = 0` na czas nauki; token testowy na sztywno w kodzie authorizera (`Bearer lab005-allow`) jako uproszczenie dydaktyczne.
 
-- Problems: -
+- Problems: Błąd **500** z API Gateway przy poprawnym i błędnym tokenie — odpowiedź authorizera w JSON z polami PascalCase (`IsAuthorized`) zamiast wymaganego `isAuthorized` (simple response, payload 2.0); naprawa przez `[JsonPropertyName("isAuthorized")]` / `context` oraz dopięcie deserializacji wejścia (`routeKey`, `headers`).
 
-- Cleanup: -
+- Cleanup: `cd infra/terraform/labs/LAB-005 && terraform destroy`; opcjonalnie usunąć lokalnie `artifacts/LAB-005/*.zip`.
 
 - Learned:
-  - -
+  - Kolejność **authorizer → backend** wyznacza API Gateway wg konfiguracji trasy, nie Lambda biznesowa.
+  - Dla HTTP API Lambda authorizer (payload 2.0, simple responses) format odpowiedzi musi być zgodny z dokumentacją AWS (m.in. camelCase); zły format lub brak `lambda:InvokeFunction` dla authorizera kończy się **500**.
+  - Przy `identity_sources` brak wymaganego nagłówka zwykle daje **401** bez wywołania authorizera.
 
 ### LAB-006
 - Decisions: -
