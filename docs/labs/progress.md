@@ -6,8 +6,8 @@
 
 - Total labs: 22
 - Done: 2
-- In progress: 3
-- Not started: 17
+- In progress: 4
+- Not started: 16
 
 ## Labs
 
@@ -19,7 +19,7 @@
 | LAB-003 | Konfiguracja środowisk i tajemnic | IN_PROGRESS | 2026-04-16 | - | - |
 | LAB-004 | JWT dla publicznego API | IN_PROGRESS | 2026-04-17 | - | - |
 | LAB-005 | Własny Lambda authorizer | DONE | 2026-04-20 | 2026-04-20 | HTTP API, REQUEST authorizer, payload 2.0 i simple responses; .NET z camelCase w JSON odpowiedzi authorizera; dwa ZIP (linux-x64) i walidacja curl. |
-| LAB-006 | Observability dla publicznego API | NOT_STARTED | - | - | - |
+| LAB-006 | Observability dla publicznego API | IN_PROGRESS | 2026-04-21 | - | - |
 | LAB-007 | Wersje, aliasy i bezpieczny release funkcji | NOT_STARTED | - | - | - |
 | LAB-008 | Skalowanie i kontrola kosztu | NOT_STARTED | - | - | - |
 | LAB-009 | Container image dla Lambdy | NOT_STARTED | - | - | - |
@@ -98,8 +98,11 @@
 
 ### LAB-006
 - Decisions: -
+
 - Problems: -
+
 - Cleanup: -
+
 - Learned:
   - -
 
