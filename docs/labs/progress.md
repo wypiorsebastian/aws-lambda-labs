@@ -5,8 +5,8 @@
 ## Summary
 
 - Total labs: 22
-- Done: 2
-- In progress: 4
+- Done: 3
+- In progress: 3
 - Not started: 16
 
 ## Labs
@@ -19,7 +19,7 @@
 | LAB-003 | Konfiguracja środowisk i tajemnic | IN_PROGRESS | 2026-04-16 | - | - |
 | LAB-004 | JWT dla publicznego API | IN_PROGRESS | 2026-04-17 | - | - |
 | LAB-005 | Własny Lambda authorizer | DONE | 2026-04-20 | 2026-04-20 | HTTP API, REQUEST authorizer, payload 2.0 i simple responses; .NET z camelCase w JSON odpowiedzi authorizera; dwa ZIP (linux-x64) i walidacja curl. |
-| LAB-006 | Observability dla publicznego API | IN_PROGRESS | 2026-04-21 | - | - |
+| LAB-006 | Observability dla publicznego API | DONE | 2026-04-21 | 2026-04-21 | HTTP API access logs + Lambda Active X-Ray + Powertools .NET 3 (logging/metrics/tracing); trasy /health /orders/{id} /fail; artefakt linux-x64 ZIP. |
 | LAB-007 | Wersje, aliasy i bezpieczny release funkcji | NOT_STARTED | - | - | - |
 | LAB-008 | Skalowanie i kontrola kosztu | NOT_STARTED | - | - | - |
 | LAB-009 | Container image dla Lambdy | NOT_STARTED | - | - | - |
@@ -97,14 +97,16 @@
   - Przy `identity_sources` brak wymaganego nagłówka zwykle daje **401** bez wywołania authorizera.
 
 ### LAB-006
-- Decisions: -
+- Decisions: HTTP API (`$default` stage) z integracją `AWS_PROXY` (payload 2.0) do jednej Lambdy `dotnet8` (`x86_64`); access logging na stage do dedykowanej grupy CloudWatch (format JSON z polami diagnostycznymi); `tracing_config.mode = Active` + `AWSXRayDaemonWriteAccess`; Powertools for AWS Lambda (.NET) 3.x (`Logging`, `Metrics`, `Tracing`) w handlerze; trasy testowe `GET /health`, `GET /orders/{orderId}`, `GET /fail`.
 
-- Problems: -
+- Problems: Przy pierwszym buildzie NuGet nie miał wersji Powertools `2.2.0` — rozwiązanie przez jawne `3.0.0` oraz usunięcie przestarzałego `using AWS.Lambda.Powertools.Metrics.Capture`.
 
-- Cleanup: -
+- Cleanup: `cd infra/terraform/labs/LAB-006 && terraform destroy`; opcjonalnie usuń lokalnie `artifacts/LAB-006/function.zip`.
 
 - Learned:
-  - -
+  - Access logs API Gateway dają widok request/response na krawędzi API; logi Lambdy pokazują kod — razem łatwiej rozdzielić błąd integracji od błędu handlera.
+  - X-Ray dla Lambda używa próbkowania; do diagnozy warto wykonać kilka requestów i patrzeć na segmenty `AWS::Lambda` vs `AWS::Lambda::Function`.
+  - Powertools ułatwia spójne structured logging i metryki EMF bez ręcznego składania formatów.
 
 ### LAB-007
 - Decisions: -
