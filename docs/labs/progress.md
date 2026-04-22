@@ -6,8 +6,8 @@
 
 - Total labs: 22
 - Done: 3
-- In progress: 3
-- Not started: 16
+- In progress: 4
+- Not started: 15
 
 ## Labs
 
@@ -22,7 +22,7 @@
 | LAB-006 | Observability dla publicznego API | DONE | 2026-04-21 | 2026-04-21 | HTTP API access logs + Lambda Active X-Ray + Powertools .NET 3 (logging/metrics/tracing); trasy /health /orders/{id} /fail; artefakt linux-x64 ZIP. |
 | LAB-007 | Wersje, aliasy i bezpieczny release funkcji | NOT_STARTED | - | - | - |
 | LAB-008 | Skalowanie i kontrola kosztu | NOT_STARTED | - | - | - |
-| LAB-009 | Container image dla Lambdy | NOT_STARTED | - | - | - |
+| LAB-009 | Container image dla Lambdy | IN_PROGRESS | 2026-04-22 | - | - |
 | LAB-010 | Custom runtime | NOT_STARTED | - | - | - |
 | LAB-011 | Native AOT w .NET 8 | NOT_STARTED | - | - | - |
 | LAB-012 | Response streaming | NOT_STARTED | - | - | - |
@@ -124,8 +124,11 @@
 
 ### LAB-009
 - Decisions: -
+
 - Problems: -
+
 - Cleanup: -
+
 - Learned:
   - -
 
