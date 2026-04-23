@@ -5,8 +5,8 @@
 ## Summary
 
 - Total labs: 22
-- Done: 3
-- In progress: 4
+- Done: 4
+- In progress: 3
 - Not started: 15
 
 ## Labs
@@ -22,7 +22,7 @@
 | LAB-006 | Observability dla publicznego API | DONE | 2026-04-21 | 2026-04-21 | HTTP API access logs + Lambda Active X-Ray + Powertools .NET 3 (logging/metrics/tracing); trasy /health /orders/{id} /fail; artefakt linux-x64 ZIP. |
 | LAB-007 | Wersje, aliasy i bezpieczny release funkcji | NOT_STARTED | - | - | - |
 | LAB-008 | Skalowanie i kontrola kosztu | NOT_STARTED | - | - | - |
-| LAB-009 | Container image dla Lambdy | IN_PROGRESS | 2026-04-22 | - | - |
+| LAB-009 | Container image dla Lambdy | DONE | 2026-04-22 | 2026-04-23 | Lambda image (.NET 8) na ECR + HTTP API; diagnostyka i naprawa błędu unsupported media type przez build bez provenance/sbom. |
 | LAB-010 | Custom runtime | NOT_STARTED | - | - | - |
 | LAB-011 | Native AOT w .NET 8 | NOT_STARTED | - | - | - |
 | LAB-012 | Response streaming | NOT_STARTED | - | - | - |
@@ -123,14 +123,17 @@
   - -
 
 ### LAB-009
-- Decisions: -
+- Decisions: Jeden spójny wariant: Lambda `package_type = Image` (.NET 8, `x86_64`) + ECR + HTTP API (`GET /health`, payload 2.0, stage `$default`); Terraform tworzy ECR/Lambda/API, a build+push obrazu jest krokiem osobnym; `image_tag` sterowany przez `terraform.tfvars`.
 
-- Problems: -
+- Problems: `InvalidParameterValueException` przy `CreateFunction` (unsupported media type manifestu obrazu) po pushu obrazu z domyślnymi attestacjami BuildKit; rozwiązanie: przebudowa i push z `--provenance=false --sbom=false` (ew. `BUILDX_NO_DEFAULT_ATTESTATIONS=1`) oraz ponowny `terraform apply`.
 
-- Cleanup: -
+- Cleanup: `cd infra/terraform/labs/LAB-009 && terraform destroy`; opcjonalnie usuń lokalne obrazy Dockera (`docker image rm ...`) i nieużywane tagi w ECR po zakończeniu ćwiczenia.
 
 - Learned:
-  - -
+  - `-target` w Terraform służył tu tylko do utworzenia ECR przed pierwszym push; pełny apply jest potrzebny później do domknięcia całego stosu.
+  - Dla Lambdy image-based krytyczna jest zgodność `image_uri` (`repo:tag`) między ECR i `var.image_tag`.
+  - Nowszy Docker/BuildKit może generować manifesty nieakceptowane przez Lambda; warto jawnie kontrolować opcje builda.
+  - Podstawowa walidacja to `curl` na `health_url` + logi CloudWatch funkcji.
 
 ### LAB-010
 - Decisions: -
