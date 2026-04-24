@@ -5,9 +5,9 @@
 ## Summary
 
 - Total labs: 22
-- Done: 4
+- Done: 5
 - In progress: 3
-- Not started: 15
+- Not started: 14
 
 ## Labs
 
@@ -23,7 +23,7 @@
 | LAB-007 | Wersje, aliasy i bezpieczny release funkcji | NOT_STARTED | - | - | - |
 | LAB-008 | Skalowanie i kontrola kosztu | NOT_STARTED | - | - | - |
 | LAB-009 | Container image dla Lambdy | DONE | 2026-04-22 | 2026-04-23 | Lambda image (.NET 8) na ECR + HTTP API; diagnostyka i naprawa błędu unsupported media type przez build bez provenance/sbom. |
-| LAB-010 | Custom runtime | NOT_STARTED | - | - | - |
+| LAB-010 | Custom runtime | DONE | 2026-04-23 | 2026-04-24 | Deklaratywne zamkniecie na prosbe uzytkownika; checklista runtime niepotwierdzona w calosci. |
 | LAB-011 | Native AOT w .NET 8 | NOT_STARTED | - | - | - |
 | LAB-012 | Response streaming | NOT_STARTED | - | - | - |
 | LAB-013 | Kiedy HTTP API nie wystarcza | NOT_STARTED | - | - | - |
@@ -136,11 +136,14 @@
   - Podstawowa walidacja to `curl` na `health_url` + logi CloudWatch funkcji.
 
 ### LAB-010
-- Decisions: -
-- Problems: -
-- Cleanup: -
+- Decisions: Custom runtime na ZIP z `provided.al2023`, handler `function.handler` (wzorzec `bootstrap` + `function.sh` z tutorialu AWS), HTTP API `GET /health` z payload 2.0; artefakt `artifacts/LAB-010/function.zip` budowany lokalnie przed `terraform plan`.
+
+- Problems: Zamknięcie deklaratywne na prośbę użytkownika bez pełnego potwierdzenia checklisty runtime (brak twardej walidacji `apply`/`curl`/logów w trackerze).
+
+- Cleanup: `cd infra/terraform/labs/LAB-010 && terraform destroy`; opcjonalnie usuń lokalnie `artifacts/LAB-010/function.zip` i katalog build.
+
 - Learned:
-  - -
+  - Dla LAB-010 uzgodniono i opisano spójny wariant techniczny (ZIP + `provided.al2023`), ale walidację wykonania warto dopiąć operacyjnie przed reuse materiału.
 
 ### LAB-011
 - Decisions: -
